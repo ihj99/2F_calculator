@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label><input type="radio" name="cals" class="factorial" checked>팩토리얼 계산기</label>
+    <label><input type="radio" name="cals" class="fibonacci">피보나치 계산기</label><br>
+    <input type="text" value="0" class="worth" style="width: 20px;">
+    <button class="cal">계산</button><br>
+    <div class="result" style="white-space: pre;"></div>
+
+    <script>
+        let f2 = {
+            factorial: function(n) {
+                let f = 1;
+                if (n>0) {
+                    for (let i=1; i<=n; i++) {
+                        f *= i;
+                    }    
+                }
+                return `${n}!=${f}`;
+            },
+        fibonacci: function(n) {
+            let a1 = 0, a2 = 1, a3 = 0;
+            for (let i=0; i<n; i++) {
+                if (i == 0) {
+                    result.innerText += `${a1} `;
+                } else if (i == 1) {
+                    result.innerText += `${a2} `;
+                } else {
+                    a3 = a1 + a2;
+                    result.innerText += `${a3} `;
+                    a1 = a2;
+                    a2 = a3;
+                }
+            }
+        }
+        };
+
+        let cal = document.querySelector('.cal');
+        let worth = document.querySelector('.worth');
+        let factorial = document.querySelector('.factorial');
+        let fibonacci = document.querySelector('.fibonacci');
+        let result = document.querySelector('.result');
+        
+        cal.addEventListener('click', function() {
+            if (factorial.value === "on") {
+                result.innerText = f2.factorial(Number(worth.value));
+            } else if (fibonacci.value === "on") {
+                f2.fibonacci(Number(worth.value));
+            }
+        });
+
+        factorial.addEventListener('click', function() {
+            fibonacci.value = "off";
+            factorial.value = "on";
+            result.innerText = "";
+        });
+        fibonacci.addEventListener('click', function() {
+            factorial.value = "off";
+            fibonacci.value = "on";
+            result.innerText = "";
+        });
+
+    </script>
+</body>
+</html>
