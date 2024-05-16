@@ -6,11 +6,18 @@
     <title>Document</title>
 </head>
 <body>
-    <label><input type="radio" name="cals" class="factorial" checked>팩토리얼 계산기</label>
-    <label><input type="radio" name="cals" class="fibonacci">피보나치 계산기</label><br>
-    <input type="text" value="0" class="worth" style="width: 20px;">
-    <button class="cal">계산</button><br>
-    <div class="result" style="white-space: pre;"></div>
+    <fieldset style="width: 300px;">
+        <legend>특수 계산기</legend>
+        <label><input type="radio" name="cals" class="factorial" checked>팩토리얼 계산기</label>
+        <label><input type="radio" name="cals" class="fibonacci">피보나치 계산기</label><br>
+        <center>
+            <input type="text" value="0" class="worth" style="width: 40px; text-align: center;">
+            <button class="cal">계산</button><br>
+        </center>
+    
+        <div class="result" style="white-space: pre;"></div>
+    </fieldset>
+
 
     <script>
         let f2 = {
@@ -47,6 +54,7 @@
         let result = document.querySelector('.result');
         
         cal.addEventListener('click', function() {
+            result.innerText = "";
             if (factorial.value === "on") {
                 result.innerText = f2.factorial(Number(worth.value));
             } else if (fibonacci.value === "on") {
